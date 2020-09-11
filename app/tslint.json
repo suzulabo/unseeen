@@ -1,0 +1,9 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint-stencil/default", "tslint-config-prettier"],
+  "rules": {
+    "no-floating-promises": true,
+    "decorated-member-style": [true, { "properties": "multiline" }],
+    "component-member-order": false
+  }
+}

@@ -1,0 +1,196 @@
+app-encrypt {
+  display: block;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+
+  main {
+    display: contents;
+  }
+
+  main.input-id {
+    .input-box {
+      input {
+        width: 200px;
+        text-align: center;
+        margin-right: 10px;
+      }
+    }
+
+    .user-not-found {
+      font-weight: bold;
+    }
+  }
+
+  main.input-files {
+    .recipient-id {
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .files-box {
+      margin: 20px auto 0;
+      display: grid;
+      max-width: 600px;
+      grid-template-columns: 1fr max-content max-content;
+      justify-content: center;
+      //gap: 10px;
+      align-items: stretch;
+      justify-items: stretch;
+
+      .row {
+        display: contents;
+
+        & > * {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        &.file::after {
+          content: '';
+          grid-column: 1 / span 3;
+          height: 2px;
+          background: linear-gradient(
+            to right,
+            var(--border-color),
+            var(--border-color) var(--progress),
+            var(--border-sub-color) var(--progress),
+            var(--border-sub-color) 100%
+          );
+        }
+
+        &.size-error {
+          color: var(--error-color);
+        }
+        &.size-zero {
+          .name,
+          .size {
+            color: var(--disable-color);
+          }
+        }
+
+        .name {
+          word-break: break-all;
+          justify-content: flex-start;
+          padding-right: 0;
+
+          &.progress {
+            opacity: 0.5;
+          }
+        }
+        .size {
+          font-size: 14px;
+        }
+
+        &.total {
+          font-size: 18px;
+        }
+        .total-label {
+          justify-content: flex-end;
+        }
+        .total-size {
+          font-weight: bold;
+        }
+
+        ion-icon {
+          font-size: 22px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .size-error,
+    .count-error {
+      color: var(--error-color);
+      text-align: center;
+      margin: 10px;
+    }
+
+    .limit {
+      padding: 10px;
+      white-space: pre-line;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      width: fit-content;
+      margin: 20px auto;
+    }
+
+    .upload {
+      margin: 20px;
+      text-align: center;
+    }
+
+    .reCAPTCHA {
+      margin: 40px auto 20px;
+    }
+  }
+
+  .upload-files {
+    .files-box {
+      margin: 20px auto 0;
+      display: grid;
+      max-width: 600px;
+      grid-template-columns: 1fr max-content;
+      justify-content: center;
+      //gap: 10px;
+      align-items: stretch;
+      justify-items: stretch;
+
+      .row {
+        display: contents;
+
+        & > * {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        &.file::after {
+          content: '';
+          grid-column: 1 / span 2;
+          height: 2px;
+          background: linear-gradient(
+            to right,
+            var(--border-color),
+            var(--border-color) var(--progress),
+            var(--border-sub-color) var(--progress),
+            var(--border-sub-color) 100%
+          );
+        }
+
+        .name {
+          word-break: break-all;
+          justify-content: flex-start;
+          padding-right: 0;
+        }
+
+        .progress {
+          font-size: 14px;
+          min-width: 40px;
+        }
+      }
+    }
+    .msg {
+      animation: blink 2s linear infinite;
+      &.done {
+        animation: none;
+      }
+    }
+    .btn-box {
+      margin-top: 30px;
+      text-align: center;
+      .upload-id {
+        font-size: 18px;
+        padding: 20px;
+        display: inline-block;
+      }
+      .btn {
+        margin: 10px 0 20px;
+      }
+    }
+  }
+}

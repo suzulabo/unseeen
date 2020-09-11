@@ -1,0 +1,18 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read: if false;
+      allow write: if false;
+    }
+
+    match /files/{path=**} {
+      allow create: if request.auth.token.upload[request.resource.name][1] >= request.time.toMillis() &&
+        request.auth.token.upload[request.resource.name][0] >= request.resource.size
+    }
+
+    match /files/{userID}/{path=**} {
+      allow get: if request.auth.token.download[userID] >= request.time.toMillis()
+    }
+  }
+}

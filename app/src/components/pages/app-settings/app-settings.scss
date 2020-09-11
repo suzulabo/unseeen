@@ -1,0 +1,49 @@
+app-settings {
+  display: block;
+
+  .delete-id-modal {
+    position: relative;
+    background-color: var(--modal-bk-color);
+    border: 1px solid var(--modal-border-color);
+    border-radius: 5px;
+
+    min-width: 300px;
+    max-width: 600px;
+    padding: 10px;
+
+    .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+
+    .input-password {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      input {
+        margin-top: 20px;
+        align-self: stretch;
+        text-align: center;
+      }
+      button {
+        margin-top: 20px;
+      }
+
+      .password-error {
+        visibility: hidden;
+        margin-bottom: 0;
+        color: var(--error-color);
+        &.show {
+          visibility: visible;
+        }
+      }
+    }
+
+    .done {
+      text-align: center;
+    }
+  }
+}

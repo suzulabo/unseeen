@@ -1,0 +1,100 @@
+app-decrypt {
+  display: block;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+
+  main {
+    display: contents;
+  }
+
+  .reCAPTCHA {
+    margin: 60px auto 20px;
+  }
+
+  main.input-password,
+  main.input-id {
+    .input-box {
+      input {
+        width: 200px;
+        text-align: center;
+        margin-right: 10px;
+      }
+    }
+
+    .error {
+      font-weight: bold;
+    }
+  }
+
+  main.files {
+    .files-box {
+      margin: 20px auto 0;
+      display: grid;
+      max-width: 600px;
+      grid-template-columns: 1fr max-content max-content;
+      justify-content: center;
+      //gap: 10px;
+      align-items: stretch;
+      justify-items: stretch;
+
+      .row {
+        display: contents;
+
+        cursor: pointer;
+
+        &.loading {
+          cursor: wait;
+        }
+
+        & > * {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        &.file::after {
+          content: '';
+          grid-column: 1 / span 3;
+          height: 2px;
+          background: linear-gradient(
+            to right,
+            var(--border-color),
+            var(--border-color) var(--progress),
+            var(--border-sub-color) var(--progress),
+            var(--border-sub-color) 100%
+          );
+        }
+
+        .name {
+          word-break: break-all;
+          justify-content: flex-start;
+          padding-right: 0;
+
+          &.progress {
+            opacity: 0.5;
+          }
+        }
+        .size {
+          font-size: 14px;
+        }
+        .btn {
+          font-size: 0;
+        }
+
+        ion-icon {
+          font-size: 22px;
+          cursor: pointer;
+
+          &.loading {
+            animation: blink 2s linear infinite;
+          }
+          &.save {
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+  }
+}

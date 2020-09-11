@@ -1,0 +1,13 @@
+{
+  "name": "firebase",
+  "private": true,
+  "scripts": {
+    "func.lint": "npm --prefix ./functions run lint",
+    "func.build": "npm --prefix ./functions run build",
+    "host.build": "npm --prefix ../app run build && rsync -a --delete ../app/www .",
+    "build": "npm run func.build && npm run host.build",
+    "serve": "npm run func.lint && npm run func.build && firebase emulators:start",
+    "deploy.only": "firebase deploy",
+    "deploy": "npm run build && npm run deploy.only"
+  }
+}
