@@ -1,8 +1,6 @@
 {
-  "name": "app",
+  "name": "unseeen-app",
   "private": true,
-  "version": "0.0.1",
-  "description": "Stencil App Starter",
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
@@ -36,7 +34,5 @@
     "tslint-stencil": "^1.0.1",
     "type-fest": "^0.15.1",
     "workbox-build": "4.3.1"
-  },
-  "license": "MIT",
-  "dependencies": {}
+  }
 }
