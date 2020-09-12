@@ -1,0 +1,20 @@
+steps:
+  - id: 'install app packages'
+    name: node:12
+    entrypoint: npm
+    dir: app
+    args: ['install']
+  - id: 'install functions packages'
+    name: node:12
+    entrypoint: npm
+    dir: firebase/functions
+    args: ['install']
+  - id: 'build'
+    name: node:12
+    entrypoint: npm
+    dir: firebase
+    args: ['run', 'build']
+  - id: 'deploy'
+    name: gcr.io/$PROJECT_ID/firebase
+    dir: firebase
+    args: ['deploy', '--project', '$PROJECT_ID']
