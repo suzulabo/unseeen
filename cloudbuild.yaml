@@ -25,6 +25,9 @@ steps:
     entrypoint: npm
     dir: firebase
     args: ['run', 'build']
+    env:
+      - 'COMMIT_ID=$SHORT_SHA'
+      - 'BRANCH_NAME=$BRANCH_NAME'
 
   - id: 'deploy'
     name: gcr.io/$PROJECT_ID/firebase
