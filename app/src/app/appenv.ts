@@ -19,4 +19,7 @@ export const setAppEnv = (env: AppEnvironment) => {
   appEnv = env;
 };
 
-export const builtTime = parseInt('__BUILT_TIME__');
+export const buildInfo = {
+  src: '__BUILD_SRC__',
+  time: parseInt('__BUILT_TIME__'),
+} as const;

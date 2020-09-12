@@ -1,6 +1,6 @@
 import { Component, h, Host, Listen, State } from '@stencil/core';
 import { getApp } from '../../../app/app';
-import { appEnv, builtTime } from '../../../app/appenv';
+import { appEnv, buildInfo } from '../../../app/appenv';
 import { formatDate } from '../../../app/utils';
 import { msgs } from '../../../i18n/i18n';
 import { If } from '../../ui/if';
@@ -174,9 +174,10 @@ export class AppRoot {
           </stencil-router>
         </main>
         <footer>
-          <div>&copy;unseeen.app</div>
-          <div class="built-time">
-            Built at {new Date(builtTime).toLocaleString()}
+          <div class="copy">&copy;unseeen.app</div>
+          <div class="build-info">Version: {buildInfo.src}</div>
+          <div class="build-info">
+            Built at {new Date(buildInfo.time).toISOString()}
           </div>
         </footer>
 

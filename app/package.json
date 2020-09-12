@@ -2,8 +2,9 @@
   "name": "unseeen-app",
   "private": true,
   "scripts": {
-    "build": "stencil build",
-    "start": "stencil build --dev --watch --serve",
+    "srcvar": "echo $(git branch --show-current)/$(git rev-parse --short HEAD)$([ \"$(git status --porcelain)\" ] && echo '+')",
+    "build": "_SRCVAR=$(npm --silent run srcvar) stencil build",
+    "start": "_SRCVAR=$(npm --silent run srcvar) stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "test.spec2": "jest --config jest-spec2.config.js",
