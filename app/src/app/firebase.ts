@@ -79,6 +79,8 @@ export class Firebase {
   }
 
   async getUser(userID: string) {
+    await this.singIn();
+
     const firestore = this.firebaseApp.firestore();
     const docRef = firestore.collection('users').doc(userID);
     const doc = await docRef.get();
