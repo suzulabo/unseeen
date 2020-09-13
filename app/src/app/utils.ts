@@ -80,6 +80,6 @@ export const formatDate = (d: Date, second?: boolean) => {
     hour: 'numeric',
     minute: '2-digit',
     hour12: false,
-    second: second ? 'numeric' : null,
+    second: second ? 'numeric' : undefined,
   });
 };
