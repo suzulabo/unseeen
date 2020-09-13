@@ -161,7 +161,7 @@ export class AppDecrypt {
             return (
               <span class="btn">
                 <ion-icon
-                  name="download"
+                  name="cloud-download"
                   onClick={() => {
                     void this.downloadFile(v);
                   }}
@@ -172,7 +172,7 @@ export class AppDecrypt {
           if (!v.state.blob) {
             return (
               <span class="btn">
-                <ion-icon name="arrow-redo" class="save loading"></ion-icon>
+                <ion-icon name="cloud-download" class="save loading"></ion-icon>
               </span>
             );
           }
@@ -180,7 +180,7 @@ export class AppDecrypt {
           return (
             <span class="btn">
               <a-download-link blob={v.state.blob} filename={v.name}>
-                <ion-icon name="arrow-redo" class="save"></ion-icon>
+                <ion-icon name="arrow-redo" class="save download"></ion-icon>
               </a-download-link>
             </span>
           );
@@ -206,11 +206,11 @@ export class AppDecrypt {
               }
             }}
           >
+            {renderBtn()}
             <span class={{ name: true, progress: progress < 100 }}>
               {v.name}
             </span>
             <span class="size">({humanFileSize(v.size)})</span>
-            {renderBtn()}
           </div>
         );
       });
