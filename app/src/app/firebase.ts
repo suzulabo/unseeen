@@ -1,16 +1,16 @@
+import { FunctionParams, FunctionResult } from '@common';
+import { Build } from '@stencil/core';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/functions';
 import 'firebase/storage';
-import { FunctionParams, FunctionResult, UpdateSubKeysParams } from '@common';
 import { appEnv } from './appenv';
-import { Build } from '@stencil/core';
 
 export class Firebase {
   constructor(private firebaseApp?: firebase.app.App) {}
 
-  devonly_setEmulator() {
+  private devonly_setEmulator() {
     if (!Build.isDev) {
       return;
     }
@@ -21,6 +21,11 @@ export class Firebase {
     firestore.settings({ ssl: false, host: `${location.host}` });
   }
 
+  private async singIn() {
+    const auth = this.firebaseApp.auth();
+    await auth.signInAnonymously();
+  }
+
   async init() {
     if (this.firebaseApp) {
       return;
@@ -29,11 +34,6 @@ export class Firebase {
     this.firebaseApp = firebase.initializeApp(appEnv.firebaseConfig);
 
     this.devonly_setEmulator();
-  }
-
-  async singIn() {
-    const auth = this.firebaseApp.auth();
-    await auth.signInAnonymously();
   }
 
   async callFunctions(params: FunctionParams): Promise<FunctionResult> {
@@ -52,15 +52,6 @@ export class Firebase {
       const auth = this.firebaseApp.auth();
       await auth.currentUser.getIdToken(true);
     }
-    return result.data as FunctionResult;
-  }
-
-  async callUpdateSubKeys(
-    params: UpdateSubKeysParams
-  ): Promise<FunctionResult> {
-    const functions = this.firebaseApp.functions();
-    const f = functions.httpsCallable('f');
-    const result = await f(params);
     return result.data as FunctionResult;
   }
 
