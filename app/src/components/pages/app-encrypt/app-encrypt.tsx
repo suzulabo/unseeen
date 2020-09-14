@@ -1,3 +1,4 @@
+import { UPLOAD_LIMIT } from '@common';
 import { Component, forceUpdate, h, Host, State } from '@stencil/core';
 import { PromiseValue } from 'type-fest';
 import { App, getApp } from '../../../app/app';
@@ -7,9 +8,9 @@ import { showLoading } from '../../ui/a-loading/a-loading-util';
 import { If } from '../../ui/if';
 import { UIreCAPTCHA } from '../../ui/recaptcha';
 
-const MAX_SIZE = 100 * 1024 * 1024;
-const MAX_TOTAL_SIZE = 200 * 1024 * 1024;
-const MAX_FILES = 10;
+const MAX_SIZE = UPLOAD_LIMIT.fileSize;
+const MAX_TOTAL_SIZE = UPLOAD_LIMIT.totalSize;
+const MAX_FILES = UPLOAD_LIMIT.count;
 
 @Component({
   tag: 'app-encrypt',
@@ -35,6 +36,7 @@ export class AppEncrypt {
     started?: boolean;
     encrypted?: { key: Uint8Array; data: Uint8Array };
     abort?: boolean;
+    getSize: () => number;
   }[] = [];
 
   @State()
@@ -58,12 +60,12 @@ export class AppEncrypt {
 
   private filesStatus = () => {
     const total = this.files.reduce((n, v) => {
-      return n + v.file.size;
+      return n + v.getSize();
     }, 0);
     const isSizeOver =
       total > MAX_TOTAL_SIZE ||
       this.files.find((v) => {
-        return v.file.size > MAX_SIZE;
+        return v.getSize() > MAX_SIZE;
       }) != null;
     const isCountOver = this.files.length > MAX_FILES;
     const canLoad = this.files.length > 0 && !isSizeOver && !isCountOver;
@@ -107,7 +109,13 @@ export class AppEncrypt {
         return file.name == v.file.name;
       });
       if (!duplicated) {
-        const v = { file: file, progress: 0 };
+        const v: AppEncrypt['files'][number] = {
+          file: file,
+          progress: 0,
+          getSize: () => {
+            return v.encrypted?.data.byteLength || v.file.size;
+          },
+        };
         this.files.push(v);
       }
     }
@@ -183,10 +191,10 @@ export class AppEncrypt {
           return this.uploadCancel;
         }
       );
-    } catch {
+    } catch (e) {
       this.uploadMsg = '';
       this.uploadError = true;
-      return;
+      throw e;
     }
 
     if (this.uploadID) {
@@ -236,7 +244,7 @@ export class AppEncrypt {
             class={{
               row: true,
               file: true,
-              'size-error': v.file.size > MAX_SIZE,
+              'size-error': v.getSize() > MAX_SIZE,
               'size-zero': v.file.size == 0,
             }}
             style={{ '--progress': `${v.progress}%` }}
@@ -244,7 +252,7 @@ export class AppEncrypt {
             <span class={{ name: true, progress: v.progress < 100 }}>
               {v.file.name}
             </span>
-            <span class="size">({humanFileSize(v.file.size)})</span>
+            <span class="size">({humanFileSize(v.getSize())})</span>
             <span class="delete-btn">
               <ion-icon
                 name="trash-outline"

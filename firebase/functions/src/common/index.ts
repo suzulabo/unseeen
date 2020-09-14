@@ -20,6 +20,7 @@ export const makeShortID = (v: string, length = 12) => {
 export const UPLOAD_LIMIT = {
   fileSize: 100 * 1024 * 1024,
   totalSize: 200 * 1024 * 1024,
+  count: 10,
   expiredSec: 10 * 60,
 } as const;
 

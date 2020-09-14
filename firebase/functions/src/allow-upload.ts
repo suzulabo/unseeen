@@ -27,8 +27,12 @@ export const onAllowUpload = async (
     throw new TypeError('destID is not found');
   }
 
+  if (params.files.length > UPLOAD_LIMIT.count) {
+    throw new RangeError('files length');
+  }
+
   const total = params.files.reduce((n, v) => {
-    if (v.size > UPLOAD_LIMIT.fileSize + 2000) {
+    if (v.size > UPLOAD_LIMIT.fileSize) {
       throw new RangeError('file size');
     }
     if (!v.name.match(/^[0-9A-Z]{12}$/)) {
@@ -36,7 +40,7 @@ export const onAllowUpload = async (
     }
     return n + v.size;
   }, 0);
-  if (total > UPLOAD_LIMIT.totalSize + 20000) {
+  if (total > UPLOAD_LIMIT.totalSize) {
     throw new RangeError('total size');
   }
 
@@ -46,7 +50,7 @@ export const onAllowUpload = async (
   params.files.forEach((v) => {
     claims[`${filePrefix}/${v.name}`] = [v.size, expired];
   });
-  claims[`${filePrefix}/index`] = [1000, expired];
+  claims[`${filePrefix}/index`] = [10000, expired];
 
   const auth = adminApp.auth();
 
