@@ -33,6 +33,10 @@ export class Firebase {
 
     this.firebaseApp = firebase.initializeApp(appEnv.firebaseConfig);
 
+    const auth = this.firebaseApp.auth();
+
+    await auth.signOut(); // reset custom claims
+
     this.devonly_setEmulator();
   }
 
