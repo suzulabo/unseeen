@@ -32,7 +32,8 @@ export class AppRoot {
     console.error('handleUnhandledRejection', event);
     event.preventDefault();
 
-    this.addError(event.reason);
+    const reason = event.reason;
+    this.addError(reason?.message || reason?.toString());
   }
 
   @State()
