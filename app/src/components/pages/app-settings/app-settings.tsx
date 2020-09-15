@@ -128,6 +128,15 @@ export class AppSettings {
           </If>
           <If if={this.app.ready}>
             <section>
+              <h2>{msgs().settings.changePassword.title}</h2>
+              <div class="btn">
+                <stencil-route-link url="/change-password" anchorClass="button">
+                  {msgs().settings.changePassword.btn}
+                </stencil-route-link>
+              </div>
+            </section>
+            <hr></hr>
+            <section>
               <h2>{msgs().settings.deleteID.title}</h2>
               <p>{msgs().settings.deleteID.desc}</p>
               <div class="btn">

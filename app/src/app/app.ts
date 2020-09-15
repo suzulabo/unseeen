@@ -139,6 +139,14 @@ export class App {
     return !!v;
   }
 
+  async updatePassword(curPassword: string, newPassword: string) {
+    const secret = await this.keyStore.getSecret(curPassword);
+    if (!secret) {
+      throw new Error('invalid password');
+    }
+    await this.keyStore.saveSecret(secret, newPassword);
+  }
+
   async deleteID(password?: string) {
     if (password) {
       const token = await reCaptchaToken();

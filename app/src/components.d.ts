@@ -15,6 +15,8 @@ export namespace Components {
     }
     interface ALoading {
     }
+    interface AppChangePassword {
+    }
     interface AppDecrypt {
     }
     interface AppDeletedUser {
@@ -50,6 +52,12 @@ declare global {
     var HTMLALoadingElement: {
         prototype: HTMLALoadingElement;
         new (): HTMLALoadingElement;
+    };
+    interface HTMLAppChangePasswordElement extends Components.AppChangePassword, HTMLStencilElement {
+    }
+    var HTMLAppChangePasswordElement: {
+        prototype: HTMLAppChangePasswordElement;
+        new (): HTMLAppChangePasswordElement;
     };
     interface HTMLAppDecryptElement extends Components.AppDecrypt, HTMLStencilElement {
     }
@@ -103,6 +111,7 @@ declare global {
         "a-download-link": HTMLADownloadLinkElement;
         "a-file-input": HTMLAFileInputElement;
         "a-loading": HTMLALoadingElement;
+        "app-change-password": HTMLAppChangePasswordElement;
         "app-decrypt": HTMLAppDecryptElement;
         "app-deleted-user": HTMLAppDeletedUserElement;
         "app-encrypt": HTMLAppEncryptElement;
@@ -124,6 +133,8 @@ declare namespace LocalJSX {
     }
     interface ALoading {
     }
+    interface AppChangePassword {
+    }
     interface AppDecrypt {
     }
     interface AppDeletedUser {
@@ -144,6 +155,7 @@ declare namespace LocalJSX {
         "a-download-link": ADownloadLink;
         "a-file-input": AFileInput;
         "a-loading": ALoading;
+        "app-change-password": AppChangePassword;
         "app-decrypt": AppDecrypt;
         "app-deleted-user": AppDeletedUser;
         "app-encrypt": AppEncrypt;
@@ -161,6 +173,7 @@ declare module "@stencil/core" {
             "a-download-link": LocalJSX.ADownloadLink & JSXBase.HTMLAttributes<HTMLADownloadLinkElement>;
             "a-file-input": LocalJSX.AFileInput & JSXBase.HTMLAttributes<HTMLAFileInputElement>;
             "a-loading": LocalJSX.ALoading & JSXBase.HTMLAttributes<HTMLALoadingElement>;
+            "app-change-password": LocalJSX.AppChangePassword & JSXBase.HTMLAttributes<HTMLAppChangePasswordElement>;
             "app-decrypt": LocalJSX.AppDecrypt & JSXBase.HTMLAttributes<HTMLAppDecryptElement>;
             "app-deleted-user": LocalJSX.AppDeletedUser & JSXBase.HTMLAttributes<HTMLAppDeletedUserElement>;
             "app-encrypt": LocalJSX.AppEncrypt & JSXBase.HTMLAttributes<HTMLAppEncryptElement>;

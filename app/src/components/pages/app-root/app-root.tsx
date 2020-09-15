@@ -170,6 +170,11 @@ export class AppRoot {
                 component="app-settings"
                 exact={true}
               />
+              <stencil-route
+                url="/change-password"
+                component="app-change-password"
+                exact={true}
+              />
               <stencil-route url="/" component="app-home" exact={true} />
             </stencil-route-switch>
           </stencil-router>

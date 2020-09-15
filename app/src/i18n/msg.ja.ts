@@ -115,6 +115,10 @@ export const msgs = {
         'IDを作成してファイルを送ってもらいましょう。\nメール認証やSNSのログインなど、個人情報は一切不要です。',
       naviBtn: 'ID作成へ',
     },
+    changePassword: {
+      title: 'パスワードの変更',
+      btn: '変更する',
+    },
     deleteID: {
       title: 'IDの削除',
       desc:
@@ -135,6 +139,14 @@ export const msgs = {
         done: '削除が完了しました',
       },
     },
+  },
+  changePassword: {
+    title: 'パスワードの変更',
+    curPassword: '現在のパスワード',
+    newPassword: '新しいパスワード',
+    passwordError: 'パスワードが違います',
+    btn: '変更する',
+    updated: '変更しました',
   },
   deletedUser: {
     desc:

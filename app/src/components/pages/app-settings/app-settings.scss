@@ -1,6 +1,16 @@
 app-settings {
   display: block;
 
+  section {
+    padding: 5px;
+  }
+
+  hr {
+    margin: 20px 0;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
   .delete-id-modal {
     position: relative;
     background-color: var(--modal-bk-color);

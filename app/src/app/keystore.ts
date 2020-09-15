@@ -30,6 +30,13 @@ export class KeyStore {
     await tx.commit();
   }
 
+  async saveSecret(secretKey: Uint8Array, password: string) {
+    const secret = encSecretKey(secretKey, password);
+    const tx = this.store.transaction();
+    tx.put(KEY.SECRET, await this.store.encrypt(secret));
+    await tx.commit();
+  }
+
   async getID() {
     const v = (await this.store.get(KEY.ID)) as Uint8Array;
     if (v) {
