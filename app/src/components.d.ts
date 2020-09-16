@@ -19,6 +19,8 @@ export namespace Components {
     }
     interface AppDecrypt {
     }
+    interface AppDeleteUser {
+    }
     interface AppDeletedUser {
     }
     interface AppEncrypt {
@@ -64,6 +66,12 @@ declare global {
     var HTMLAppDecryptElement: {
         prototype: HTMLAppDecryptElement;
         new (): HTMLAppDecryptElement;
+    };
+    interface HTMLAppDeleteUserElement extends Components.AppDeleteUser, HTMLStencilElement {
+    }
+    var HTMLAppDeleteUserElement: {
+        prototype: HTMLAppDeleteUserElement;
+        new (): HTMLAppDeleteUserElement;
     };
     interface HTMLAppDeletedUserElement extends Components.AppDeletedUser, HTMLStencilElement {
     }
@@ -113,6 +121,7 @@ declare global {
         "a-loading": HTMLALoadingElement;
         "app-change-password": HTMLAppChangePasswordElement;
         "app-decrypt": HTMLAppDecryptElement;
+        "app-delete-user": HTMLAppDeleteUserElement;
         "app-deleted-user": HTMLAppDeletedUserElement;
         "app-encrypt": HTMLAppEncryptElement;
         "app-home": HTMLAppHomeElement;
@@ -137,6 +146,8 @@ declare namespace LocalJSX {
     }
     interface AppDecrypt {
     }
+    interface AppDeleteUser {
+    }
     interface AppDeletedUser {
     }
     interface AppEncrypt {
@@ -157,6 +168,7 @@ declare namespace LocalJSX {
         "a-loading": ALoading;
         "app-change-password": AppChangePassword;
         "app-decrypt": AppDecrypt;
+        "app-delete-user": AppDeleteUser;
         "app-deleted-user": AppDeletedUser;
         "app-encrypt": AppEncrypt;
         "app-home": AppHome;
@@ -175,6 +187,7 @@ declare module "@stencil/core" {
             "a-loading": LocalJSX.ALoading & JSXBase.HTMLAttributes<HTMLALoadingElement>;
             "app-change-password": LocalJSX.AppChangePassword & JSXBase.HTMLAttributes<HTMLAppChangePasswordElement>;
             "app-decrypt": LocalJSX.AppDecrypt & JSXBase.HTMLAttributes<HTMLAppDecryptElement>;
+            "app-delete-user": LocalJSX.AppDeleteUser & JSXBase.HTMLAttributes<HTMLAppDeleteUserElement>;
             "app-deleted-user": LocalJSX.AppDeletedUser & JSXBase.HTMLAttributes<HTMLAppDeletedUserElement>;
             "app-encrypt": LocalJSX.AppEncrypt & JSXBase.HTMLAttributes<HTMLAppEncryptElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;

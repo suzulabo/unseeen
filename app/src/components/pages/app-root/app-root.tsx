@@ -175,6 +175,11 @@ export class AppRoot {
                 component="app-change-password"
                 exact={true}
               />
+              <stencil-route
+                url="/delete-user"
+                component="app-delete-user"
+                exact={true}
+              />
               <stencil-route url="/" component="app-home" exact={true} />
             </stencil-route-switch>
           </stencil-router>
