@@ -39,9 +39,11 @@ export class AppDecrypt {
     if (!this.password) {
       return;
     }
-    this.passwordVerified = await this.app.verifyPassword(this.password);
-    this.passwordError = !this.passwordVerified;
-    forceUpdate(this);
+
+    await showLoading(async () => {
+      this.passwordVerified = await this.app.verifyPassword(this.password);
+      this.passwordError = !this.passwordVerified;
+    });
   }
 
   private async checkRecvID() {

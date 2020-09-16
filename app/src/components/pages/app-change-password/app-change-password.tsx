@@ -1,4 +1,5 @@
 import { Component, h, Host, State } from '@stencil/core';
+import { showLoading } from 'src/components/ui/a-loading/a-loading-util';
 import { If } from 'src/components/ui/if';
 import { getApp } from '../../../app/app';
 import { msgs } from '../../../i18n/i18n';
@@ -29,13 +30,16 @@ export class AppChangePassword {
     if (!this.curPassword) {
       return;
     }
-    this.passwordError = !(await this.app.verifyPassword(this.curPassword));
-    if (this.passwordError) {
-      return;
-    }
 
-    await this.app.updatePassword(this.curPassword, this.newPassword);
-    this.updated = true;
+    await showLoading(async () => {
+      this.passwordError = !(await this.app.verifyPassword(this.curPassword));
+      if (this.passwordError) {
+        return;
+      }
+
+      await this.app.updatePassword(this.curPassword, this.newPassword);
+      this.updated = true;
+    });
   }
 
   render() {
