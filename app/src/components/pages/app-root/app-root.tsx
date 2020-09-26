@@ -142,9 +142,12 @@ export class AppRoot {
           <stencil-route-link url="/settings">
             <ion-icon name="settings-sharp"></ion-icon>
           </stencil-route-link>
-          <stencil-route-link url="/help">
+          <a
+            href="https://github.com/suzulabo/unseeen/wiki"
+            rel="help external"
+          >
             <ion-icon name="help-circle-sharp"></ion-icon>
-          </stencil-route-link>
+          </a>
         </header>
         <main>
           <stencil-router titleSuffix=" - Unseeen">
