@@ -33,6 +33,8 @@ export namespace Components {
     }
     interface AppStart {
     }
+    interface AppTerms {
+    }
     interface AppUploadHistory {
     }
 }
@@ -109,6 +111,12 @@ declare global {
         prototype: HTMLAppStartElement;
         new (): HTMLAppStartElement;
     };
+    interface HTMLAppTermsElement extends Components.AppTerms, HTMLStencilElement {
+    }
+    var HTMLAppTermsElement: {
+        prototype: HTMLAppTermsElement;
+        new (): HTMLAppTermsElement;
+    };
     interface HTMLAppUploadHistoryElement extends Components.AppUploadHistory, HTMLStencilElement {
     }
     var HTMLAppUploadHistoryElement: {
@@ -128,6 +136,7 @@ declare global {
         "app-root": HTMLAppRootElement;
         "app-settings": HTMLAppSettingsElement;
         "app-start": HTMLAppStartElement;
+        "app-terms": HTMLAppTermsElement;
         "app-upload-history": HTMLAppUploadHistoryElement;
     }
 }
@@ -160,6 +169,8 @@ declare namespace LocalJSX {
     }
     interface AppStart {
     }
+    interface AppTerms {
+    }
     interface AppUploadHistory {
     }
     interface IntrinsicElements {
@@ -175,6 +186,7 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "app-settings": AppSettings;
         "app-start": AppStart;
+        "app-terms": AppTerms;
         "app-upload-history": AppUploadHistory;
     }
 }
@@ -194,6 +206,7 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-settings": LocalJSX.AppSettings & JSXBase.HTMLAttributes<HTMLAppSettingsElement>;
             "app-start": LocalJSX.AppStart & JSXBase.HTMLAttributes<HTMLAppStartElement>;
+            "app-terms": LocalJSX.AppTerms & JSXBase.HTMLAttributes<HTMLAppTermsElement>;
             "app-upload-history": LocalJSX.AppUploadHistory & JSXBase.HTMLAttributes<HTMLAppUploadHistoryElement>;
         }
     }

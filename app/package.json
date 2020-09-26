@@ -9,7 +9,8 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "test.spec2": "jest --config jest-spec2.config.js",
     "test.spec2.watch": "jest --config jest-spec2.config.js --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "terms": "marked -o src/assets/terms.html -i terms.md"
   },
   "devDependencies": {
     "@peculiar/webcrypto": "^1.1.1",
@@ -28,6 +29,7 @@
     "ionicons": "^5.1.2",
     "jest": "26.0.1",
     "jest-cli": "26.0.1",
+    "marked": "^1.1.1",
     "puppeteer": "2.1.1",
     "ts-jest": "^26.1.0",
     "tslint": "^6.1.2",

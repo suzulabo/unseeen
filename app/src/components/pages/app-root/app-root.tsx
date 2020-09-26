@@ -180,12 +180,16 @@ export class AppRoot {
                 component="app-delete-user"
                 exact={true}
               />
+              <stencil-route url="/terms" component="app-terms" exact={true} />
               <stencil-route url="/" component="app-home" exact={true} />
             </stencil-route-switch>
           </stencil-router>
         </main>
         <footer>
-          <div class="copy">&copy;unseeen.app</div>
+          <div class="copy">
+            <span>&copy;unseeen.app / </span>
+            <stencil-route-link url="/terms">terms</stencil-route-link>
+          </div>
           <div class="build-info">Version: {buildInfo.src}</div>
           <div class="build-info">
             Built at {new Date(buildInfo.time).toISOString()}

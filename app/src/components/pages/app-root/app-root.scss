@@ -40,6 +40,11 @@ app-root {
 
     .copy {
       margin-bottom: 10px;
+      font-size: 15px;
+
+      a {
+        text-decoration: none;
+      }
     }
     .build-info {
       font-size: 12px;
