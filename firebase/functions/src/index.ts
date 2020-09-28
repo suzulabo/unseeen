@@ -43,6 +43,5 @@ export const scheduledDaily = pubsub
   .schedule(config().schedule.daily)
   .timeZone(config().schedule.tz)
   .onRun((context) => {
-    console.log('start scheduledDaily');
     return deleteUser(context, adminApp);
   });
