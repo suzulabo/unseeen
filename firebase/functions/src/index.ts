@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase-admin';
-import { pubsub } from 'firebase-functions';
+import { config, pubsub } from 'firebase-functions';
 import { onCall } from 'firebase-functions/lib/providers/https';
 import { onAllowDownload } from './allow-download';
 import { onAllowUpload } from './allow-upload';
@@ -40,7 +40,9 @@ export const f = onCall(
 );
 
 export const scheduledDaily = pubsub
-  .schedule('every 1 days')
+  .schedule(config().schedule.daily)
+  .timeZone(config().schedule.tz)
   .onRun((context) => {
+    console.log('start scheduledDaily');
     return deleteUser(context, adminApp);
   });
