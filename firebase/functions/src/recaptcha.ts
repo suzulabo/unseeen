@@ -27,6 +27,5 @@ export const verify = async (token: string) => {
     return true;
   }
 
-  console.log(result);
   return false;
 };
