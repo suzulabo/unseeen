@@ -190,7 +190,7 @@ export class AppRoot {
         </main>
         <footer>
           <div class="copy">
-            <span>&copy;unseeen.app / </span>
+            <span>&copy;unseeen / </span>
             <stencil-route-link url="/terms">terms</stencil-route-link>
           </div>
           <div class="build-info">Version: {buildInfo.src}</div>
