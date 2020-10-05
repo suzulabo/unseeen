@@ -197,6 +197,14 @@ export class AppRoot {
           <div class="build-info">
             Built at {new Date(buildInfo.time).toISOString()}
           </div>
+          <div class="contact">
+            <a href="https://github.com/suzulabo/unseeen">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+            <a href={appEnv.contact}>
+              <ion-icon name="mail"></ion-icon>
+            </a>
+          </div>
         </footer>
 
         <script

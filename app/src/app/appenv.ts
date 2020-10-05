@@ -11,6 +11,7 @@ export interface AppEnvironment {
   readonly reCAPTCHASiteKey: string;
   readonly subKeysCount: number;
   readonly filesExpiredDays: number;
+  readonly contact: string;
 }
 
 export let appEnv: AppEnvironment;
