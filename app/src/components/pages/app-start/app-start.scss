@@ -1,0 +1,89 @@
+app-start {
+  display: block;
+  margin: 10vh auto 0;
+  max-width: 600px;
+  padding: 0 10px;
+
+  .input-password {
+    label {
+      font-weight: bold;
+    }
+    label.password {
+      display: flex;
+      flex-direction: column;
+      margin: 40px 0 10px;
+      input {
+        text-align: center;
+      }
+    }
+    label.hide-password {
+      display: flex;
+      align-items: center;
+      input {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .confirm {
+    .values {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: max-content max-content;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      gap: 10px;
+      padding: 20px;
+
+      .head {
+        text-align: right;
+        font-weight: bold;
+      }
+      .value {
+        max-width: 300px;
+        overflow-wrap: break-word;
+
+        &.id {
+          display: flex;
+          align-items: center;
+          min-width: 160px;
+          ion-icon {
+            margin-left: auto;
+            font-size: 18px;
+            cursor: pointer;
+
+            &.spin {
+              animation: spin 0.5s linear;
+            }
+          }
+        }
+      }
+    }
+    .btn {
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
+
+  .backnext {
+    margin-top: 30px;
+    display: flex;
+    .next {
+      margin-left: auto;
+    }
+  }
+
+  .reCAPTCHA {
+    margin-top: 60px;
+  }
+
+  .completed {
+    .box {
+      text-align: center;
+      width: max-content;
+      margin: 40px auto;
+      padding: 10px 40px;
+    }
+  }
+}

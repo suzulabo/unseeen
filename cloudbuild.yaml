@@ -1,0 +1,35 @@
+steps:
+  - id: 'load app env'
+    name: gcr.io/cloud-builders/gcloud
+    entrypoint: 'bash'
+    args:
+      - -c
+      - >-
+        gcloud secrets versions access latest
+        --secret=app-env-ts > app/src/global/app.env.ts
+
+  - id: 'install app packages'
+    name: node:12
+    entrypoint: npm
+    dir: app
+    args: ['install']
+
+  - id: 'install functions packages'
+    name: node:12
+    entrypoint: npm
+    dir: firebase/functions
+    args: ['install']
+
+  - id: 'build'
+    name: node:12
+    entrypoint: npm
+    dir: firebase
+    args: ['run', 'build']
+    env:
+      - 'COMMIT_ID=$SHORT_SHA'
+      - 'BRANCH_NAME=$BRANCH_NAME'
+
+  - id: 'deploy'
+    name: gcr.io/$PROJECT_ID/firebase
+    dir: firebase
+    args: ['deploy', '--project', '$PROJECT_ID']

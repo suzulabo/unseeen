@@ -1,0 +1,47 @@
+app-upload-history {
+  .list {
+    .log {
+      margin: 20px 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .time {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+    .head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      .dest {
+        margin-right: 10px;
+      }
+      ion-icon {
+        margin-left: 2px;
+        font-size: 18px;
+      }
+    }
+    .files {
+      font-size: 15px;
+      margin: 10px 0;
+      display: grid;
+      grid-template-columns: minmax(auto, max-content) max-content;
+      padding: 10px;
+      gap: 10px;
+      width: fit-content;
+      .name {
+        word-break: break-all;
+      }
+      .size {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .back-btn {
+    margin: 10px;
+  }
+}
