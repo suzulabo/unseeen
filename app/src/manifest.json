@@ -1,15 +1,12 @@
 {
   "name": "Unseeen",
-  "short_name": "Unseeen",
   "start_url": "/",
-  "display": "standalone",
+  "display": "minimal-ui",
   "icons": [
     {
-      "src": "assets/icon/icon.png",
+      "src": "assets/icon/unseeen.png",
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "background_color": "#00796b",
-  "theme_color": "#00796b"
+  ]
 }

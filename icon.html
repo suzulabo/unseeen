@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  </head>
+  <style>
+    body {
+      background-color: #eeeeee;
+    }
+
+    #box {
+      background-color:  #00796b;
+      color: #ffffff;
+      width: 512px;
+      height: 512px;
+      font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      border-radius: 10%;
+    }
+    div {
+      line-height: 1;
+    }
+  </style>
+  <script>
+    createImage = async () => {
+      const box = document.getElementById('box');
+      console.log(html2canvas);
+      const c = html2canvas(box, {
+        scale:1, backgroundColor: "rgba(0,0,0,0)"});
+      c.then(canvas => {
+        console.log(canvas);
+        const img = document.getElementById('captureImg');
+        img.src = canvas.toDataURL();
+      });
+    };
+  </script>
+
+  <body>
+    <div id="box">
+      <div>Unseeen</div>
+    </div>
+    <button onclick="createImage()">create</button>
+    <div>
+      <img id="captureImg" />
+    </div>
+  </body>
+</html>
