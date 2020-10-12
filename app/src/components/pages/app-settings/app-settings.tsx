@@ -45,7 +45,7 @@ export class AppSettings {
                 url="/delete-user"
                 anchorClass="button danger"
               >
-                {msgs().settings.changePassword.btn}
+                {msgs().settings.deleteID.btn}
               </stencil-route-link>
             </div>
           </section>
